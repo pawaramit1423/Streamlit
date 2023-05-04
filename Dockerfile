@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/LChaudhari/StreamlitProject.git .
+RUN git clone https://github.com/streamlit/streamlit-example.git .
 
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["streamlit", "run", "App.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
