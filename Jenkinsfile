@@ -4,8 +4,8 @@ pipeline {
         AWS_ACCOUNT_ID="176295807911"
         AWS_DEFAULT_REGION="us-east-1" 
 	CLUSTER_NAME="Nodejs"
-	SERVICE_NAME="nodejsapp-service"
-	TASK_DEFINITION_NAME="nodejs-app"
+	SERVICE_NAME="nodeapp-service"
+	TASK_DEFINITION_NAME="sampleapp"
 	DESIRED_COUNT="1"
         IMAGE_REPO_NAME="nodejs"
         IMAGE_TAG="${env.BUILD_ID}"
@@ -44,7 +44,8 @@ pipeline {
             withAWS(credentials: registryCredential, region: "${AWS_DEFAULT_REGION}") {
                 script {
 			sh "chmod +x -R ${env.WORKSPACE}"
-			sh './script.sh'
+			//sh './script.sh'
+			sh "aws ecs update-service --cluster ${env.CLUSTER_NAME} --service ${env.SERVICE_NAME} --force-new-deployment --image ${env.IMAGE_REPO_NAME}:${env.IMAGE_TAG}"
                 }
             } 
         }
