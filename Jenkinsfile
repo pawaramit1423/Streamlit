@@ -43,8 +43,8 @@ pipeline {
      steps{
             withAWS(credentials: registryCredential, region: "${AWS_DEFAULT_REGION}") {
                 script {
-			// sh './script.sh'
-			sh "aws ecs update-service --cluster ${env.CLUSTER_NAME} --service ${env.SERVICE_NAME} --force-new-deployment
+			 sh './script.sh'
+			
 		
             } 
         }
