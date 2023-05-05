@@ -47,7 +47,7 @@ pipeline {
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
                         credentialsId: '176295807911'
                     ]]) {
-                    sh "aws ecs update-service --region us-east-1 --cluster Nodejs --service nodeapp-service --force-new-deployment --task-definition arn:aws:ecs:us-east-1:176295807911:task-definition/sampleapp:5"
+                    sh "aws ecs update-service --region us-east-1 --cluster Nodejs --service nodeapp-service"
                     sh "aws ecs update-service --region us-east-1 --cluster ${env.CLUSTER_NAME} --service ${env.SERVICE_NAME}"
                 }
             }
