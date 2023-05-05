@@ -45,8 +45,7 @@ pipeline {
                 script {
 			sh "chmod +x -R ${env.WORKSPACE}"
 			//sh './script.sh'
-			sh "aws ecs update-service --cluster ${env.CLUSTER_NAME} --service ${env.SERVICE_NAME} --force-new-deployment --image ${env.IMAGE_REPO_NAME}:${env.IMAGE_TAG}"
-                }
+			sh "aws ecs update-service --cluster ${env.CLUSTER_NAME} --service ${env.SERVICE_NAME} --force-new-deployment
             } 
         }
       }      
